@@ -32,12 +32,12 @@ public class WrapperTest {
         return join(lineSeparator(), words);
     }
 
-/*    @Test
+    @Test
     public void wrapsWordsOnSpacesWhenTheyDontFitIntoOneLine() {
         String wrapped = wrap("abc def", 5);
 
         assertThat(wrapped).isEqualTo(joinWithNewLines("abc", "def"));
-    }*/
+    }
 
     @Test
     public void throwsInvalidArgumentExceptionWhenColumnNumberIsSmallerThanOne() {

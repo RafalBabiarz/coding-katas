@@ -1,5 +1,6 @@
 package com.github.rafalbabiarz.wordwrap;
 
+import static java.lang.Math.min;
 import static java.lang.System.lineSeparator;
 
 public class Wrapper {
@@ -13,18 +14,16 @@ public class Wrapper {
     private String wrap(String toWrap) {
         if (toWrap.length() > columnNumber) {
             String firstLine = findFirstLine(toWrap);
-            String remainingLines = wrap(toWrap.substring(firstLine.length()));
+            String remainingLines = wrap(toWrap.substring(firstLine.length()).trim());
             return firstLine + lineSeparator() + remainingLines;
         }
         return toWrap;
     }
 
     private String findFirstLine(String toWrap) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < columnNumber; i++) {
-            stringBuilder.append(toWrap.charAt(i));
-        }
-        return stringBuilder.toString();
+        String[] splitted = toWrap.split(" ");
+        int lineLength = min(splitted[0].length(), columnNumber);
+        return splitted[0].substring(0, lineLength);
     }
 
     public static String wrap(String string, int columnNumber) {
