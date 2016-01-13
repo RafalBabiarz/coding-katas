@@ -30,14 +30,14 @@ public class Wrapper {
     }
 
     private String appendRemainingWords(String firstWord, String[] split) {
-        StringBuilder stringBuilder = new StringBuilder(firstWord);
+        StringBuilder actualLine = new StringBuilder(firstWord);
         for (int i = 1; i < split.length; i++) {
-            if (wordFitsIntoLine(split[i], stringBuilder)) {
-                stringBuilder.append(" ");
-                stringBuilder.append(split[i]);
+            if (wordFitsIntoLine(split[i], actualLine)) {
+                actualLine.append(" ");
+                actualLine.append(split[i]);
             }
         }
-        return stringBuilder.toString();
+        return actualLine.toString();
     }
 
     private boolean wordFitsIntoLine(String proposedWord, StringBuilder actualLine) {
