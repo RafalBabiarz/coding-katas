@@ -23,17 +23,21 @@ public class Wrapper {
         String[] split = toWrap.split(" ");
         String firstWord = split[0];
         if (firstWord.length() <= columnNumber) {
-            return firstWord + appendRemainingWords(split, firstWord);
+            return appendRemainingWords(firstWord, split);
 
         }
         return firstWord.substring(0, columnNumber);
     }
 
-    private String appendRemainingWords(String[] split, String firstWord) {
-        if (split[1].length() + firstWord.length() < columnNumber) {
-            return " " + split[1];
+    private String appendRemainingWords(String firstWord, String[] split) {
+        StringBuilder stringBuilder = new StringBuilder(firstWord);
+        for (int i = 1; i < split.length; i++) {
+            if (split[i].length() + stringBuilder.length() < columnNumber) {
+                stringBuilder.append(" ");
+                stringBuilder.append(split[i]);
+            }
         }
-        return "";
+        return stringBuilder.toString();
     }
 
     public static String wrap(String string, int columnNumber) {
