@@ -39,6 +39,13 @@ public class WrapperTest {
         assertThat(wrapped).isEqualTo(joinWithNewLines("abc", "def"));
     }
 
+/*    @Test
+    public void addsMultipleWordsToOneLineWhenItsPossible() {
+        String wrapped = wrap("a b c d", 3);
+
+        assertThat(wrapped).isEqualTo(joinWithNewLines("a b", "c d"));
+    }*/
+
     @Test
     public void throwsInvalidArgumentExceptionWhenColumnNumberIsSmallerThanOne() {
         expectedException.expect(IllegalArgumentException.class);

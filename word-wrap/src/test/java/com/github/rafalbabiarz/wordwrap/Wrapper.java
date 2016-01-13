@@ -1,6 +1,5 @@
 package com.github.rafalbabiarz.wordwrap;
 
-import static java.lang.Math.min;
 import static java.lang.System.lineSeparator;
 
 public class Wrapper {
@@ -21,9 +20,12 @@ public class Wrapper {
     }
 
     private String findFirstLine(String toWrap) {
-        String[] splitted = toWrap.split(" ");
-        int lineLength = min(splitted[0].length(), columnNumber);
-        return splitted[0].substring(0, lineLength);
+        String[] split = toWrap.split(" ");
+        String firstWord = split[0];
+        if (firstWord.length() <= columnNumber) {
+            return firstWord;
+        }
+        return firstWord.substring(0, columnNumber);
     }
 
     public static String wrap(String string, int columnNumber) {
