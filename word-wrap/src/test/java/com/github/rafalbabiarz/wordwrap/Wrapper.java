@@ -12,7 +12,9 @@ public class Wrapper {
 
     private String wrap(String toWrap) {
         if (toWrap.length() > columnNumber) {
-            return toWrap.substring(0, columnNumber) + lineSeparator() + toWrap.substring(columnNumber);
+            String firstLine = toWrap.substring(0, columnNumber);
+            String remainingLines = wrap(toWrap.substring(columnNumber));
+            return firstLine + lineSeparator() + remainingLines;
         }
         return toWrap;
     }

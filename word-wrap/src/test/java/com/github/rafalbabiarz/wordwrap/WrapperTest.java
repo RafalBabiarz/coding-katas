@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static com.github.rafalbabiarz.wordwrap.Wrapper.wrap;
+import static java.lang.String.join;
 import static java.lang.System.lineSeparator;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,10 +22,14 @@ public class WrapperTest {
     }
 
     @Test
-    public void wrapsToAnotherLineWhenSingleWordIsLongerThanColumnNumber() {
-        String wrapped = wrap("ab", 1);
+    public void wrapsSingleWordToMultipleLinesWhenItsLongerThanColumnNumber() {
+        String wrapped = wrap("abcde", 2);
 
-        assertThat(wrapped).isEqualTo("a" + lineSeparator() + "b");
+        assertThat(wrapped).isEqualTo(joinWithNewLines("ab", "cd", "e"));
+    }
+
+    private String joinWithNewLines(String... words) {
+        return join(lineSeparator(), words);
     }
 
     @Test
