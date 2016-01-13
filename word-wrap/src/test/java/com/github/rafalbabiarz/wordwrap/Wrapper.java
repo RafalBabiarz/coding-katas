@@ -32,12 +32,16 @@ public class Wrapper {
     private String appendRemainingWords(String firstWord, String[] split) {
         StringBuilder stringBuilder = new StringBuilder(firstWord);
         for (int i = 1; i < split.length; i++) {
-            if (split[i].length() + stringBuilder.length() < columnNumber) {
+            if (wordFitsIntoLine(split[i], stringBuilder)) {
                 stringBuilder.append(" ");
                 stringBuilder.append(split[i]);
             }
         }
         return stringBuilder.toString();
+    }
+
+    private boolean wordFitsIntoLine(String proposedWord, StringBuilder actualLine) {
+        return proposedWord.length() + actualLine.length() < columnNumber;
     }
 
     public static String wrap(String string, int columnNumber) {
