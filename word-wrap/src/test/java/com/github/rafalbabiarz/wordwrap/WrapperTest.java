@@ -40,13 +40,6 @@ public class WrapperTest {
     }
 
     @Test
-    public void addsTwoWordsToOneLineWhenItsPossible() {
-        String wrapped = wrap("a b c d", 3);
-
-        assertThat(wrapped).isEqualTo(joinWithNewLines("a b", "c d"));
-    }
-
-    @Test
     public void addsMultipleWordsToOneLineWhenItsPossible() {
         String wrapped = wrap("a bc d e", 6);
 
