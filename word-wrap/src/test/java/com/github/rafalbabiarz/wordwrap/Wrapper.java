@@ -12,11 +12,19 @@ public class Wrapper {
 
     private String wrap(String toWrap) {
         if (toWrap.length() > columnNumber) {
-            String firstLine = toWrap.substring(0, columnNumber);
-            String remainingLines = wrap(toWrap.substring(columnNumber));
+            String firstLine = findFirstLine(toWrap);
+            String remainingLines = wrap(toWrap.substring(firstLine.length()));
             return firstLine + lineSeparator() + remainingLines;
         }
         return toWrap;
+    }
+
+    private String findFirstLine(String toWrap) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < columnNumber; i++) {
+            stringBuilder.append(toWrap.charAt(i));
+        }
+        return stringBuilder.toString();
     }
 
     public static String wrap(String string, int columnNumber) {
