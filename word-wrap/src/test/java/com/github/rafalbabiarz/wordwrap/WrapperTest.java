@@ -47,6 +47,13 @@ public class WrapperTest {
     }
 
     @Test
+    public void shouldProperlyWrapOnMultipleWhitespaces() {
+        String wrapped = wrap(" ab   c", 2);
+
+        assertThat(wrapped).isEqualTo(joinWithNewLines("ab", "c"));
+    }
+
+    @Test
     public void throwsInvalidArgumentExceptionWhenColumnNumberIsSmallerThanOne() {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Column number must be bigger than 0");
