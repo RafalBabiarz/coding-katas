@@ -9,6 +9,7 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:3.3.0'
-    testCompile 'com.google.guava:guava:19.0'
+    testCompile 'org.assertj:assertj-core:3.6.1'
+    testCompile 'pl.pragmatists:JUnitParams:1.0.5'
+    compile 'com.google.guava:guava:21.0'
 }
